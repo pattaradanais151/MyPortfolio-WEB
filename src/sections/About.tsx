@@ -11,11 +11,11 @@ const About: React.FC = () => (
         </h2>
       </div>
 
-      <div className="about-sidebar animate-up delay-1">
-        <div className="about-photo-frame">
-          <img src="/1234.png" className="about-photo"/>
-            </div>
-           </div>
+      <div className="about-grid">
+        <div className="about-sidebar animate-up delay-1">
+          <div className="about-photo-frame">
+            <div className="about-photo-placeholder">👤</div>
+          </div>
 
           <div className="about-quick-info">
             <div className="info-row">
