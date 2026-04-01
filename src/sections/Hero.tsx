@@ -1,24 +1,44 @@
 import React from 'react';
 
-const Hero: React.FC = () => {
-  return (
-    <section id="hero" className="hero-section">
-      <div className="container">
-        <h2 className="greeting">Hi, I'm</h2>
-        <h1 className="name">Pattaradanai Saiwongkham</h1>
-        <h3 className="role">Software Engineering Applicant</h3>
-        <p className="summary">
-          Second year Higher Vocational Certificate graduate in Computer Hardware from Ban Hong Vocational College (2025). 
-          Passionate about Software Engineering, building web apps with React & modern tools. 
-          Applying to Bachelor's in Software Engineering at RMUTL Chiang Mai.
-        </p>
-        <div className="cta-buttons">
-          <a href="#projects" className="btn btn-primary">ดูผลงาน</a>
-          <a href="/public/resume.pdf" target="_blank" className="btn btn-outline" rel="noreferrer">ดาวน์โหลด Resume</a>
+const Hero: React.FC = () => (
+  <section id="hero" className="hero-section">
+    <div className="container">
+      <div className="hero-inner">
+        <div className="hero-left">
+          <div className="hero-tag animate-up delay-1">
+            Available for Study / Work
+          </div>
+          <h1 className="hero-name animate-up delay-2">
+            Pattaradanai<br />
+            <em>Saiwongkham</em>
+          </h1>
+          <div className="hero-role animate-up delay-3">
+            software engineering applicant<span className="cursor" />
+          </div>
+          <p className="hero-desc animate-up delay-4">
+            จบ ปวส.2 เทคโนโลยีคอมพิวเตอร์จากวิทยาลัยการอาชีพบ้านโฮ่ง — 
+            กำลังสมัครปริญญาตรีวิศวกรรมซอฟต์แวร์ RMUTL เชียงใหม่. 
+            สนใจ web development, UI systems, และการเขียน clean code.
+          </p>
+          <div className="hero-actions animate-up delay-5">
+            <a href="#projects" className="btn btn-primary">ดูผลงาน →</a>
+            <a href="#contact" className="btn btn-ghost">ติดต่อ</a>
+          </div>
+        </div>
+
+        <div className="hero-right">
+          <div className="profile-frame" style={{ animationDelay: '0.4s' }}>
+            <div className="profile-placeholder">P</div>
+            <div className="profile-badge">
+              <strong>2025</strong>
+              Ban Hong Vocational
+            </div>
+          </div>
         </div>
       </div>
-    </section>
-  );
-};
+    </div>
+    <div className="hero-scroll">scroll</div>
+  </section>
+);
 
 export default Hero;

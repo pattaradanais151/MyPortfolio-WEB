@@ -1,24 +1,63 @@
 import React from 'react';
 
-const Contact: React.FC = () => {
-  return (
-    <section id="contact" className="contact-section">
-      <div className="container">
-        <h2 className="section-title">Get In Touch</h2>
-        <p>ติดต่อเพื่อสมัครเรียน / โปรเจกต์ / ปรึกษาได้เลยครับ</p>
-        <div className="contact-links">
-          <a href="mailto:pattaradanais.373@gmail.com" className="btn btn-primary contact-btn">Email</a>
-          <a href="https://www.facebook.com/FaemkunG.19" target="_blank" className="btn btn-outline contact-btn" rel="noreferrer noopener">Facebook</a>
-          <a href="https://www.instagram.com/fxemkxng_.19/" target="_blank" className="btn btn-outline contact-btn" rel="noreferrer noopener">Instagram</a>
-          <a href="https://line.me/R/ti/p/~dvc.faem02" target="_blank" className="btn btn-outline contact-btn" rel="noreferrer noopener">Line ID</a>
+const socials = [
+  { icon: '✉', name: 'email',     handle: 'pattaradanais.373@gmail.com', url: 'mailto:pattaradanais.373@gmail.com' },
+  { icon: 'f', name: 'facebook',  handle: 'FaemkunG.19',                 url: 'https://www.facebook.com/FaemkunG.19' },
+  { icon: '◎', name: 'instagram', handle: 'fxemkxng_.19',                url: 'https://www.instagram.com/fxemkxng_.19/' },
+  { icon: '⊡', name: 'line id',   handle: 'dvc.faem02',                  url: 'https://line.me/R/ti/p/~dvc.faem02' },
+];
+
+const Contact: React.FC = () => (
+  <section id="contact">
+    <div className="divider" />
+    <div className="container" style={{ paddingTop: '100px', paddingBottom: '100px' }}>
+      <div className="section-header animate-up">
+        <div className="section-label">05. contact</div>
+      </div>
+
+      <div className="contact-layout">
+        <div className="animate-up delay-1">
+          <h2 className="contact-text">
+            Let's <em>connect</em><br />
+            and build something<br />
+            together.
+          </h2>
+          <p className="contact-sub">
+            ไม่ว่าจะเป็นเรื่องการสมัครเรียน, โปรเจกต์ร่วม,<br />
+            หรือแค่อยากคุย — ทักมาได้เลยครับ.
+          </p>
+          <a className="contact-email" href="mailto:pattaradanais.373@gmail.com">
+            pattaradanais.373@gmail.com
+          </a>
         </div>
-        </div>
-        <div style={{marginTop: '3rem', fontSize: '0.9rem', color: '#9ca3af'}}>
-          <p>📍 172 หมู่ 13 ต.ศรีวิชัย อ.ลี้ จ.ลำพูน 51110</p>
+
+        <div className="animate-up delay-2">
+          <div style={{ marginBottom: '12px', fontFamily: 'var(--mono)', fontSize: '11px', color: 'var(--text)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+            — find me on
+          </div>
+          <div className="social-grid">
+            {socials.map((s, i) => (
+              <a
+                key={i}
+                className="social-row"
+                href={s.url}
+                target={s.url.startsWith('mailto') ? undefined : '_blank'}
+                rel="noreferrer noopener"
+              >
+                <div className="social-name">
+                  <span className="social-icon" style={{ fontFamily: 'var(--mono)', color: 'var(--accent)' }}>
+                    {s.icon}
+                  </span>
+                  {s.name}
+                </div>
+                <span className="social-handle">{s.handle}</span>
+              </a>
+            ))}
+          </div>
         </div>
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default Contact;

@@ -1,78 +1,81 @@
 import React from 'react';
 
-interface ProjectProps {
-  title: string;
-  description: string;
-  techStack: string[];
-  liveUrl: string;
-  githubUrl: string;
-  image?: string;
-}
-
-const projectsData: ProjectProps[] = [
+const projects = [
   {
+    num: '01',
     title: 'E-Commerce Dashboard',
-    description: 'แดชบอร์ดจัดการร้านค้าออนไลน์ครบครัน ระบบผู้ใช้, สินค้า, สั่งซื้อ, รายงานยอดขาย',
-    techStack: ['React', 'TypeScript', 'Tailwind', 'Node.js', 'MongoDB'],
-    liveUrl: 'https://ecommerce-pattawut.vercel.app',
-    githubUrl: 'https://github.com/pattawut/ecommerce-dashboard',
+    badge: 'live' as const,
+    desc: 'แดชบอร์ดจัดการร้านค้าครบระบบ — user management, inventory, order tracking, sales analytics',
+    stack: ['React', 'TypeScript', 'Node.js', 'MongoDB', 'Tailwind'],
+    url: 'https://github.com/pattawut/ecommerce-dashboard',
   },
   {
+    num: '02',
     title: 'Task Management App',
-    description: 'แอปจัดการงานแบบเรียลไทม์ รองรับทีม รองรับ drag & drop และการแจ้งเตือน',
-    techStack: ['Next.js', 'Socket.io', 'Prisma', 'PostgreSQL'],
-    liveUrl: 'https://taskmanager-pattawut.vercel.app',
-    githubUrl: 'https://github.com/pattawut/task-manager',
+    badge: 'live' as const,
+    desc: 'แอปจัดการงานทีม realtime — drag & drop, notifications, multi-workspace support',
+    stack: ['Next.js', 'Socket.io', 'Prisma', 'PostgreSQL'],
+    url: 'https://github.com/pattawut/task-manager',
   },
   {
+    num: '03',
     title: 'Weather Forecast App',
-    description: 'แอปพยากรณ์อากาศ 7 วัน พร้อมแผนที่และข้อมูลละเอียดจาก OpenWeather API',
-    techStack: ['React', 'Chart.js', 'Leaflet Maps'],
-    liveUrl: 'https://weather-pattawut.vercel.app',
-    githubUrl: 'https://github.com/pattawut/weather-app',
+    badge: 'wip' as const,
+    desc: 'พยากรณ์อากาศ 7 วัน พร้อม interactive map และ detailed hourly breakdown',
+    stack: ['React', 'Chart.js', 'Leaflet', 'OpenWeather API'],
+    url: 'https://github.com/pattawut/weather-app',
   },
   {
+    num: '04',
     title: 'Portfolio Website',
-    description: 'เว็บไซต์ Portfolio ส่วนตัวที่คุณกำลังดูอยู่ สร้างด้วย React + Vite + TypeScript',
-    techStack: ['React', 'TypeScript', 'Vite', 'CSS Modules'],
-    liveUrl: 'https://pattawut-portfolio.vercel.app',
-    githubUrl: 'https://github.com/pattawut/portfolio',
-  }
+    badge: 'live' as const,
+    desc: 'เว็บไซต์ที่คุณกำลังดูอยู่นี้ — dark terminal aesthetic, responsive, CSS-only animations',
+    stack: ['React', 'TypeScript', 'Vite', 'CSS'],
+    url: 'https://github.com/pattawut/portfolio',
+  },
 ];
 
-const Projects: React.FC = () => {
-  return (
-    <section id="projects" className="projects-section">
-      <div className="container">
-        <h2 className="section-title">Featured Projects</h2>
-        <div className="projects-grid">
-          {projectsData.map((project, index) => (
-            <div key={index} className="project-card">
-              <img 
-                src={`/src/assets/project${index + 1}.jpg`} 
-                alt={project.title} 
-                className="project-image"
-                style={{width: '100%', height: '200px', objectFit: 'cover'}}
-              />
-              <div className="project-info">
-                <h3>{project.title}</h3>
-                <p>{project.description}</p>
-                <div className="tech-stack">
-                  {project.techStack.map((tech, idx) => (
-                    <span key={idx} className="tech-badge">{tech}</span>
-                  ))}
-                </div>
-                <div className="project-links">
-                  <a href={project.liveUrl} target="_blank" rel="noreferrer" className="btn">Live Demo</a>
-                  <a href={project.githubUrl} target="_blank" rel="noreferrer" className="btn btn-outline">GitHub</a>
-                </div>
+const Projects: React.FC = () => (
+  <section id="projects">
+    <div className="divider" />
+    <div className="container" style={{ paddingTop: '100px', paddingBottom: '100px' }}>
+      <div className="section-header animate-up">
+        <div className="section-label">04. projects</div>
+        <h2 className="section-title">
+          Things I've<br /><em>built</em>
+        </h2>
+      </div>
+
+      <div className="projects-list animate-up delay-2">
+        {projects.map((p, i) => (
+          <a
+            key={i}
+            className="project-item"
+            href={p.url}
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            <span className="project-num">{p.num}</span>
+            <div className="project-main">
+              <div className="project-title-row">
+                <span className="project-name">{p.title}</span>
+                <span className={`project-badge badge-${p.badge}`}>
+                  {p.badge === 'live' ? '● live' : '○ wip'}
+                </span>
+              </div>
+              <p className="project-desc">{p.desc}</p>
+              <div className="project-stack">
+                {p.stack.map((s, j) => (
+                  <span key={j} className="stack-tag">{s}</span>
+                ))}
               </div>
             </div>
-          ))}
-        </div>
+            <span className="project-arrow">↗</span>
+          </a>
+        ))}
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default Projects;

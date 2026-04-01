@@ -1,29 +1,92 @@
-/* Reset พื้นฐาน - Dark Mode */
-* {
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@300;400;500&family=Instrument+Sans:wght@400;500&display=swap');
+
+*, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
-  scroll-behavior: smooth;
 }
 
-body {
-  background-color: #16171d;
-  color: #f3f4f6;
+:root {
+  --bg:        #0a0a0b;
+  --bg-2:      #0f0f11;
+  --bg-card:   #111114;
+  --border:    #1e1e22;
+  --border-hi: #2a2a2f;
+  --text:      #5a5a65;
+  --text-mid:  #8a8a95;
+  --text-hi:   #e8e8ee;
+  --accent:    #4ade80;
+  --accent-2:  #22d3ee;
+  --accent-glow: rgba(74, 222, 128, 0.12);
+  --accent-glow2: rgba(34, 211, 238, 0.1);
+  --red:       #f87171;
+  --serif:     'DM Serif Display', Georgia, serif;
+  --mono:      'JetBrains Mono', 'Fira Code', monospace;
+  --sans:      'Instrument Sans', system-ui, sans-serif;
+  --ease:      cubic-bezier(0.16, 1, 0.3, 1);
 }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text-mid);
+  font-family: var(--mono);
+  font-size: 14px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  /* Subtle grain overlay */
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+}
+
+::selection {
+  background: var(--accent-glow);
+  color: var(--accent);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border-hi); border-radius: 2px; }
 
 .container {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 24px;
 }
 
-section {
-  padding: 80px 0;
-  min-height: 100vh; /* ให้แต่ละ Section เต็มจอพอดี (ปรับแก้ได้) */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+/* ─── Animations ─────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+@keyframes slideRight {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 var(--accent-glow); }
+  50%       { box-shadow: 0 0 24px 4px var(--accent-glow); }
+}
+@keyframes scanline {
+  from { background-position: 0 0; }
+  to   { background-position: 0 100%; }
 }
 
-/* คุณสามารถเริ่มเขียนแอนิเมชันของคุณต่อจากจุดนี้ได้เลย... */
+.animate-up {
+  opacity: 0;
+  animation: fadeUp 0.7s var(--ease) forwards;
+}
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.25s; }
+.delay-3 { animation-delay: 0.4s; }
+.delay-4 { animation-delay: 0.55s; }
+.delay-5 { animation-delay: 0.7s; }
