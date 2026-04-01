@@ -1,0 +1,29 @@
+/* Reset พื้นฐาน - Dark Mode */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #16171d;
+  color: #f3f4f6;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+section {
+  padding: 80px 0;
+  min-height: 100vh; /* ให้แต่ละ Section เต็มจอพอดี (ปรับแก้ได้) */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* คุณสามารถเริ่มเขียนแอนิเมชันของคุณต่อจากจุดนี้ได้เลย... */
